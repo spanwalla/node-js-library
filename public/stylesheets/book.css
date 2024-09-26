@@ -1,0 +1,38 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.book-identifiers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.container-book {
+    justify-content: flex-start;
+}
+
+.book-thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 120px;
+    width: 80px;
+    background-color: #D9D9D9;
+}
+
+.manage-item:nth-child(1), .manage-item:nth-child(2) {
+    flex: 1 1 20%
+}
+
+.manage-item:nth-child(3), .manage-item:nth-child(4) {
+    flex: 1 1 15%;
+}
+
+.book-status {
+    padding: 5px 30px;
+}

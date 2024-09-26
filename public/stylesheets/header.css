@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: var(--global-padding);
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 500px) {
+    header {
+        justify-content: flex-end;
+    }
+
+    .header-user-info {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        display: none;
+    }
+}
+
+.header-user-info {
+    border-radius: var(--global-border-radius);
+    padding: 5px 15px;
+}
