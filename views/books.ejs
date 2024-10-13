@@ -1,58 +1,23 @@
 <div class="container container-shadow container-search">
-    <form class="gap-normal">
-        <label for="search-query">Search query</label>
-        <input id="search-query" name="query" placeholder="Search query" type="search">
-        <label for="order-by">Order by</label>
-        <select id="order-by" name="order-by">
+    <form id="searchForm" class="gap-normal">
+        <label for="searchQuery">Search query</label>
+        <input id="searchQuery" name="query" placeholder="Search query" type="search">
+        <label for="orderBy">Order by</label>
+        <select id="orderBy" name="order_by">
             <option value="">Default</option>
-            <option value="return-asc">Return date ascending</option>
-            <option value="return-desc">Return date descending</option>
+            <option value="return_asc">Return date ascending</option>
+            <option value="return_desc">Return date descending</option>
         </select>
         <div>
-            <input id="in-stock" name="in-stock" type="checkbox">
-            <label for="in-stock">In stock</label>
+            <input id="inStock" name="in_stock" type="checkbox">
+            <label for="inStock">In stock</label>
         </div>
     </form>
-    <button type="button" name="add" class="btn-primary btn-round"><i class="fa-solid fa-plus"></i></button>
+    <button type="button" name="add" onclick="openDialogAdd()" class="btn-primary btn-round"><i class="fa-solid fa-plus"></i></button>
 </div>
-<!-- TODO: Под book-card сделать отдельный шаблон, а здесь цикл include с заполнением информации -->
-<div class="container container-shadow container-book gap-normal">
-    <div class="flex-wrap w70 gap-normal">
-        <div class="book-thumbnail">
-            <i class="fa-solid fa-book"></i>
-        </div>
-        <div class="flex-wrap flex-column w80">
-            <h2>Title of the book</h2>
-            <p>Description: authors, release date and e.g.</p>
-        </div>
-    </div>
-    <div class="container flex-center flex-column border-black-thin book-status">
-        <span class="text-bold color-primary">Out of date</span>
-        <span class="text-light">13.09.2024</span>
-    </div>
-    <div class="flex-wrap gap-normal">
-        <button type="button" name="edit" class="btn-secondary btn-round"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button type="button" name="delete" class="btn-secondary btn-round"><i class="fa-solid fa-trash"></i></button>
-    </div>
+
+<div id="booksContainer" class="flex-column gap-large">
+    <%- include('partials/books_card', { books: books }) %>
 </div>
-<div class="container container-shadow container-book gap-normal">
-    <div class="flex-wrap w70 gap-normal">
-        <div class="book-thumbnail">
-            <i class="fa-solid fa-book"></i>
-        </div>
-        <div class="flex-wrap flex-column w80">
-            <h2>HELMI</h2>
-            <p>Det ungdomsförsök, som härmedelst öfverlemnas i en välvillig allmänhets
-                händer, framträder utan alla anspråk. Det är drömmar af en ung
-                fantasie, som af en oöfvad hand blifvit sammanknutna till ett helt,
-                hvilket man vågat gifva benämningen "dramatisk dikt".</p>
-        </div>
-    </div>
-    <div class="container flex-center flex-column border-black-thin book-status">
-        <span class="text-bold">In stock</span>
-    </div>
-    <div class="flex-wrap gap-normal">
-        <button type="button" name="edit" class="btn-secondary btn-round"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button type="button" name="delete" class="btn-secondary btn-round"><i class="fa-solid fa-trash"></i></button>
-    </div>
-</div>
+
+<%- include('partials/book_manage') %>

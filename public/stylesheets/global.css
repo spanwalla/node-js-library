@@ -50,7 +50,7 @@ select {
     font-family: inherit;
 }
 
-input[type=text], input[type=password], input[type=email], input[type=number], input[type=url], input[type=search] {
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=url], input[type=search], input[type=date] {
     padding: 10px;
     border: 1px solid var(--primary-color);
     border-radius: var(--global-border-radius);
@@ -167,6 +167,14 @@ input[type=text], input[type=password], input[type=email], input[type=number], i
 
 .w80 {
     width: 80%;
+}
+
+.mt10px {
+    margin-top: 10px;
+}
+
+.p10 {
+    padding: 10px;
 }
 
 .border-black-thin {

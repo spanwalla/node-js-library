@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
         res.render('layout', {
             title: 'LMS | Login',
             customStyles: ['login'],
+            customScripts: ['login'],
             body: html
         });
     });

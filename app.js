@@ -1,8 +1,13 @@
 const createError = require('http-errors');
+const formData = require("express-form-data");
 const express = require('express');
+const os = require("os");
+const fs = require("fs");
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
+const storage = require('./storage');
+storage.loadData('books.json');
 
 const apiRouter = require('./routes/api');
 const booksRouter = require('./routes/books');
@@ -11,6 +16,16 @@ const loginRouter = require('./routes/login');
 
 const app = express();
 
+const thumbnailsDir = path.join(__dirname, 'public', 'thumbnails');
+if (!fs.existsSync(thumbnailsDir)) {
+  fs.mkdirSync(thumbnailsDir);
+}
+
+const options = {
+  uploadDir: thumbnailsDir,
+  autoClean: false
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -18,8 +33,12 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(formData.parse(options));
+app.use(formData.format());
+app.use(formData.stream());
+app.use(formData.union());
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);

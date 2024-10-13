@@ -9,11 +9,7 @@ header {
 
 @media (max-width: 500px) {
     header {
-        justify-content: flex-end;
-    }
-
-    .header-user-info {
-        flex-wrap: wrap;
+        display: none;
     }
 
     .logo {

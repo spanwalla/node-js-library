@@ -22,7 +22,7 @@ main {
     min-width: 50%;
 }
 
-label[for="search-query"], label[for="order-by"] {
+label[for="searchQuery"], label[for="orderBy"] {
     display: none;
 }
 
@@ -37,13 +37,21 @@ label[for="search-query"], label[for="order-by"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+}
+
+.default-thumbnail {
     height: 60px;
     width: 40px;
+    padding: 20px;
     background-color: #D9D9D9;
 }
 
 .book-status {
     padding: 10px;
     min-width: 10%;
+}
+
+.dialog-manage {
+    width: 70%;
+    max-width: 400px;
 }

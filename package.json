@@ -1,16 +1,17 @@
 {
   "name": "node-js-library",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
     "debug": "~4.3.7",
     "ejs": "~3.1.10",
     "express": "~4.21.0",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "http-errors": "~2.0.0",
+    "morgan": "~1.10.0",
+    "axios": "~1.7.7",
+    "express-form-data": "~2.0.23"
   }
 }

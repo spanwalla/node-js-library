@@ -1,0 +1,36 @@
+<% books.forEach(([id, book]) => { %>
+    <% if (!book) { %>
+        <% return; %>
+    <% } %>
+    <div class="container container-shadow container-book gap-normal" data-id="<%= id %>">
+        <div class="flex-wrap w70 gap-normal">
+            <% if (book.thumbnail === "default" || book.thumbnail.length === 0) { %>
+                <div class="book-thumbnail default-thumbnail">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+            <% } else { %>
+                <picture class="book-thumbnail">
+                    <img src="/<%= book.thumbnail %>" alt="Book thumbnail" width="80" height="100">
+                </picture>
+            <% } %>
+            <div class="flex-wrap flex-column w80">
+                <a href="/books/<%= id %>"><h2><%= book.title %></h2></a>
+                <p>Written by: <%= book.authors.join(', ') %>. Released at: <%= book.releaseDate %>.</p>
+            </div>
+        </div>
+        <div class="container flex-center flex-column border-black-thin book-status">
+            <% if (book.status === 'in_stock') { %>
+                <span class="text-bold">In stock</span>
+            <% } else if (book.status === 'ordered') { %>
+                <span class="text-bold">Ordered</span>
+                <span class="text-light"><%= book.returnDate %></span>
+            <% } else { %>
+                <span class="text-bold">Unknown</span>
+            <% } %>
+        </div>
+        <div class="flex-wrap gap-normal">
+            <button type="button" name="edit" class="btn-secondary btn-round" onclick="openDialogEdit(<%= id %>)"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button type="button" name="delete" class="btn-secondary btn-round btn-need-confirm"><i class="fa-solid fa-trash"></i></button>
+        </div>
+    </div>
+<% }); %>

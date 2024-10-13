@@ -16,11 +16,27 @@
             <link rel="stylesheet" href="/stylesheets/<%= customStyles[i] %>.css">
         <% } %>
     <% } %>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
 <%- include('partials/header') %>
 <main>
     <%- body %>
+    <dialog id="confirmDialog" class="container container-shadow dialog-confirm gap-normal" aria-label="Confirm action">
+        <p id="messageDialog" class="text-center">Are you sure?</p>
+        <div class="flex-center flex-wrap gap-normal mt10px">
+            <button id="confirmButton" class="btn-primary">Confirm</button>
+            <button class="btn-secondary" onclick="window.confirmDialog.close()">Cancel</button>
+        </div>
+    </dialog>
 </main>
+<% if (customScripts && customScripts.length > 0) { %>
+    <% for (let i = 0; i < customScripts.length; i++) { %>
+        <script src="/javascripts/<%= customScripts[i] %>.js"></script>
+    <% } %>
+<% } %>
 </body>
 </html>

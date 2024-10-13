@@ -6,6 +6,7 @@
 const app = require('../app');
 const debug = require('debug')('node-js-library:server');
 const http = require('http');
+const storage = require('../storage');
 
 /**
  * Get port from environment and store in Express.
@@ -25,6 +26,31 @@ const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+/**
+ * Graceful shutdown function
+ */
+
+function gracefulShutdown () {
+  debug('Shutting down gracefully...');
+  storage.saveAllData()
+  server.close(() => {
+    debug('Closed out remaining connections.');
+    process.exit(0);
+  });
+
+  setTimeout(() => {
+    debug('Forcing shutdown...');
+    process.exit(1);
+  }, 10000);
+}
+
+/**
+ * Handle termination signals
+ */
+
+process.on('SIGTERM', gracefulShutdown);
+process.on('SIGINT', gracefulShutdown);
 
 /**
  * Normalize a port into a number, string, or false.
